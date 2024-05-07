@@ -3,13 +3,30 @@ version: 2
 sources:
   - name: raw 
     schema: gz_raw_data
+    description: greenweez raw data source
     tables:
     - name: product
       identifier: raw_gz_product 
-
+      description: greenweez products
+      columns: 
+        - name: products_id
+        - name: purchase_price
+                
     - name: sales
       identifier: raw_gz_sales 
+      description: sales of greenweez
+      columns:
+        - name: date_date
+        - name: orders_id
+        - name: products_id
+        - name: revenue
+        - name: quantity
 
     - name: ship
       identifier: raw_gz_ship
-  
+      description: shipping details
+      columns: 
+        - name: orders_id
+        - name: shipping_fee
+        - name: logcost
+        - name: ship_cost
