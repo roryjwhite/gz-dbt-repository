@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: gz_raw_data
-    tables :
-    - name: raw_gz_product
+  - name: gz_raw_data AS raw
+    tables:
+    - name: raw_gz_product AS product
     - name: raw_gz_sales
     - name: raw_gz_ship
   
