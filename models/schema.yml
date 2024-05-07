@@ -18,6 +18,10 @@ sources:
                          
     - name: sales
       identifier: raw_gz_sales 
+      freshness:
+        warn_after: {count: 90, period: day}
+      loaded_at_field: "CAST(date_date as TIMESTAMP)"        
+
       tests:
       - unique:
           column_name: "orders_id || '-' || pdt_id"
