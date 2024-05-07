@@ -10,10 +10,17 @@ sources:
       description: greenweez products
       columns: 
         - name: products_id
+          tests: 
+            - unique
+            - not_null
         - name: purchase_price
-                
+                        
+                         
     - name: sales
       identifier: raw_gz_sales 
+      tests:
+      - unique:
+          column_name: "orders_id || '-' || pdt_id"
       description: sales of greenweez
       columns:
         - name: date_date
@@ -27,6 +34,9 @@ sources:
       description: shipping details
       columns: 
         - name: orders_id
+          tests:
+            - unique
+            - not_null
         - name: shipping_fee
         - name: logcost
         - name: ship_cost
