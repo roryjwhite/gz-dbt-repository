@@ -7,7 +7,7 @@ WITH subquery AS (
     , CAST(quantity AS FLOAT64) * CAST(purchase_price AS FLOAT64) AS purchase_cost  
         
 FROM {{ref("stg_raw__sales")}}
-JOIN {{ref("stg_raw__product")}}
+LEFT JOIN {{ref("stg_raw__product")}}
 USING (products_id)
 )
 SELECT products_id
