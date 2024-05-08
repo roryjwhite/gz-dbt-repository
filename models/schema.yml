@@ -1,76 +1,60 @@
 version: 2
 
 sources:
-  - name: raw
+  - name: raw 
     schema: gz_raw_data
-    description: GreenWeez raw data
+    description: greenweez raw data source
     tables:
-      - name: adwords
-        identifier: raw_gz_adwords
-        description: adwords data
-        columns:
-          - name: date_date
-          - name: paid_source
-          - name: campaign_key
-          - name: campaign_name
-          - name: ads_cost
-          - name: impression
-          - name: click
-      - name: bing
-        identifier: raw_gz_bing
-        description: bing data
-        columns:
-          - name: date_date
-          - name: paid_source
-          - name: campaign_key
-          - name: campaign_name
-          - name: ads_cost
-          - name: impression
-          - name: click
-      - name: criteo
-        identifier: raw_gz_criteo
-        description: criteo data
-        columns:
-          - name: date_date
-          - name: paid_source
-          - name: campaign_key
-          - name: campaign_name
-          - name: ads_cost
-          - name: impression
-          - name: click
-      - name: facebook
-        identifier: raw_gz_facebook
-        description: facebook data
-        columns:
-          - name: date_date
-          - name: paid_source
-          - name: campaign_key
-          - name: campaign_name
-          - name: ads_cost
-          - name: impression
-          - name: click
+    - name: product
+      identifier: raw_gz_product 
+      description: greenweez products
+      columns: 
+        - name: products_id
+          tests: 
+            - unique
+            - not_null
+        - name: purchase_price
+                        
+                         
+    - name: sales
+      identifier: raw_gz_sales 
+      freshness:
+        warn_after: {count: 90, period: day}
+      loaded_at_field: "CAST(date_date as TIMESTAMP)"        
 
-models:
-  - name: int_campaigns
-    description: union of all stg tables
-    columns:
-        - name: date_date
-        - name: paid_source
-        - name: campaign_key
-        - name: campaign_name
-        - name: ads_cost
-        - name: impression
-        - name: click
-    tests:
+      tests:
       - unique:
-          column_name: "(date_date || '-' || campaign_key)"
+          column_name: "orders_id || '-' || pdt_id"
+      description: sales of greenweez
+      columns:
+        - name: date_date
+        - name: orders_id
+        - name: products_id
+        - name: revenue
+        - name: quantity
 
-  - name: int_campaigns_day
-    description: daily aggregation of all ads data
-    columns:
-      - name: date_date
-        tests:
-          - unique
-      - name: ads_cost
-      - name: ads_impression
-      - name: ads_click
+    - name: ship
+      identifier: raw_gz_ship
+      description: shipping details
+      columns: 
+        - name: orders_id
+          tests:
+            - unique
+            - not_null
+        - name: shipping_fee
+        - name: logcost
+        - name: ship_cost
+
+    - name: int_sales_margin
+      identifier: int_sales_margin
+      description: margin info
+      columns:
+        - name: products_id
+        - name: orders_id
+        - name: date_date
+        - name: revenue
+        - name: quantity
+        - name: purchase_cost
+        - name: margin
+
+    
