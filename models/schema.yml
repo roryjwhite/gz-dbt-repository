@@ -52,5 +52,15 @@ sources:
 
 models:
   - name: int_campaigns
+    description: union of all stg tables
+    columns:
+        - name: date_date
+        - name: paid_source
+        - name: campaign_key
+        - name: campaign_name
+        - name: ads_cost
+        - name: impression
+        - name: click
     tests:
-      - unique
+      - unique:
+          column_name: "(date_date || '-' || campaign_key)"
