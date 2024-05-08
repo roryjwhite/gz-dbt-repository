@@ -16,6 +16,7 @@ sources:
           - name: ads_cost
           - name: impression
           - name: click
+
       - name: bing
         identifier: raw_gz_bing
         description: bing data
@@ -27,6 +28,7 @@ sources:
           - name: ads_cost
           - name: impression
           - name: click
+
       - name: criteo
         identifier: raw_gz_criteo
         description: criteo data
@@ -38,6 +40,7 @@ sources:
           - name: ads_cost
           - name: impression
           - name: click
+
       - name: facebook
         identifier: raw_gz_facebook
         description: facebook data
@@ -50,8 +53,42 @@ sources:
           - name: impression
           - name: click
 
+      - name: product
+        identifier: raw_gz_product 
+        description: greenweez products
+        columns: 
+        - name: products_id
+          tests: 
+            - unique
+            - not_null
+        - name: purchase_price          
 
-          
+      - name: sales
+        identifier: raw_gz_sales          
+        freshness:
+          warn_after: {count: 90, period: day}
+        loaded_at_field: "CAST(date_date as TIMESTAMP)"        
+        description: sales of greenweez
+        columns:
+        - name: date_date
+        - name: orders_id
+        - name: products_id
+        - name: revenue
+        - name: quantity
+
+      - name: ship
+        identifier: raw_gz_ship
+        description: shipping details
+        columns: 
+        - name: orders_id
+          tests:
+            - unique
+            - not_null
+        - name: shipping_fee
+        - name: logcost
+        - name: ship_cost
+
+            
 
 models:
   - name: int_campaigns
@@ -77,3 +114,5 @@ models:
       - name: ads_cost
       - name: ads_impression
       - name: ads_click
+
+  
