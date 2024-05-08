@@ -17,4 +17,5 @@ SELECT products_id
     , quantity
     , ROUND(purchase_cost,2) AS purchase_cost
     , ROUND(CAST(revenue AS FLOAT64) - purchase_cost,2) AS margin
+    , {{margin_percent(revenue,purchase_cost)}} AS margin_percent
 FROM subquery
