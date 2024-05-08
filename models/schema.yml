@@ -7,9 +7,50 @@ sources:
     tables:
       - name: adwords
         identifier: raw_gz_adwords
+        description: adwords data
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+          - name: campaign_name
+          - name: ads_cost
+          - name: impression
+          - name: click
       - name: bing
         identifier: raw_gz_bing
+        description: bing data
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+          - name: campaign_name
+          - name: ads_cost
+          - name: impression
+          - name: click
       - name: criteo
         identifier: raw_gz_criteo
+        description: criteo data
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+          - name: campaign_name
+          - name: ads_cost
+          - name: impression
+          - name: click
       - name: facebook
         identifier: raw_gz_facebook
+        description: facebook data
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+          - name: campaign_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
+models:
+  - name: int_campaigns
+    tests:
+      - unique
