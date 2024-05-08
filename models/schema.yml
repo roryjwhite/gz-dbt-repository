@@ -64,3 +64,13 @@ models:
     tests:
       - unique:
           column_name: "(date_date || '-' || campaign_key)"
+
+  - name: int_campaigns_day
+    description: daily aggregation of all ads data
+    columns:
+      - name: date_date
+        tests:
+          - unique
+      - name: ads_cost
+      - name: ads_impression
+      - name: ads_click
