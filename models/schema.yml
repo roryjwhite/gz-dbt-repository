@@ -1,8 +1,7 @@
 version: 2
 
 sources:
-  - name: raw
-    identifier: gz_raw_data
+  - name: gz_raw_data
     tables:
       - name: adwords
         identifier: raw_gz_adwords
