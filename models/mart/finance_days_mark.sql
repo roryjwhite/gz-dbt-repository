@@ -4,6 +4,6 @@ SELECT date_date
     , SUM(total_revenue)/COUNT(orders_id) AS avg_basket
     , SUM(sum_margin) AS margin
     , SUM(operational_margin) AS operational_margin
-FROM {{ref("int_orders_operational")}}
+FROM {{ref("int_orders_operational_mark")}}
 GROUP BY date_date
 ORDER BY date_date DESC

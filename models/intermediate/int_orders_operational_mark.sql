@@ -5,7 +5,7 @@ SELECT orders_id
     , total_revenue
     , total_purchase_cost
     , sum_margin
-FROM {{ref("int_orders_margin")}}
-JOIN {{ref("stg_raw__ship")}}
+FROM {{ref("int_orders_margin_mark")}}
+JOIN {{ref("stg_raw__ship_mark")}}
 USING (orders_id)
 ORDER BY date_date DESC, orders_id DESC
