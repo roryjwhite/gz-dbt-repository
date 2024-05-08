@@ -44,3 +44,17 @@ sources:
         - name: shipping_fee
         - name: logcost
         - name: ship_cost
+
+    - name: int_sales_margin
+      identifier: int_sales_margin
+      description: margin info
+      columns:
+        - name: products_id
+        - name: orders_id
+        - name: date_date
+        - name: revenue
+        - name: quantity
+        - name: purchase_cost
+        - name: margin
+
+    
