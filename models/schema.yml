@@ -115,4 +115,56 @@ models:
       - name: ads_impression
       - name: ads_click
 
+  - name: int_sales_margin_mark
+    description: margin info
+    columns:
+      - name: products_id
+      - name: orders_id
+      - name: date_date
+      - name: revenue
+      - name: quantity 
+      - name: purchase_cost
+      - name: margin
   
+  - name: int_orders_margin_mark
+    description: orders margin info
+    columns:
+      - name: orders_id
+      - name: date_date
+      - name: total_revenue
+      - name: total_qty
+      - name: total_purchase_cost
+      - name: sum_margin
+
+  - name: int_orders_operational_mark
+    description: operational info
+    columns:
+      - name: orders_id
+      - name: date_date
+      - name: operational_margin
+      - name: total_qty
+      - name: total_revenue
+      - name: total_purchase_cost
+      - name: sum_margin
+
+  - name: finance_days_mark
+    description: finance info by day
+    columns:
+      - name: date_date
+      - name: nb_transactions
+      - name: revenue
+      - name: avg_basket
+      - name: margin 
+      - name: operational_margin
+
+  - name: finance_campaigns_day
+    description: finance and campaign info
+    columns:
+      - name: ads_margin
+      - name: avg_basket
+      - name: operational_margin
+      - name: revenue    
+      - name: nb_transactions
+      - name: ads_cost
+      - name: ads_impression
+      - name: ads_click    
