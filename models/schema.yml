@@ -50,6 +50,9 @@ sources:
           - name: impression
           - name: click
 
+
+          
+
 models:
   - name: int_campaigns
     description: union of all stg tables
